@@ -132,9 +132,18 @@
             navMenu.classList.toggle('active');
         });
 
-        // Fechar menu ao clicar em um link
+        // Funcionalidade de menu ativo e fechar menu mobile
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function(e) {
+                // Remove a classe 'active' de todos os links
+                document.querySelectorAll('.nav-menu a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Adiciona a classe 'active' ao link clicado
+                this.classList.add('active');
+                
+                // Fecha o menu mobile após clicar
                 navMenu.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
             });
